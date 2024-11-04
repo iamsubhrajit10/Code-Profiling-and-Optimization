@@ -47,13 +47,13 @@ int main()
     // Initialize the arrays randomly
     for (int i = 0; i < N; i++)
     {
-        array1[i] = rand() % 100;
+        array1[i] = rand() % 10;
     }
 
     // Initialize the arrays randomly
     for (int i = 0; i < N; i++)
     {
-        array2[i] = rand() % 100;
+        array2[i] = rand() % 10;
     }
     // initialize the result array
     int *array3 = (int *)malloc(N * sizeof(int));

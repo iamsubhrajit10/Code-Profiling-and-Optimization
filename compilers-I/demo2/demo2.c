@@ -6,11 +6,17 @@
 int sum_of_two_arrays(int *array1, int *array2, int size)
 {
     int total_sum = 0;
+    int sum1 = 0, sum2 = 0;
     for (int i = 0; i < size; i++)
     {
-        int add = array1[i] + array2[i];
-        total_sum += add;
+        sum1 += array1[i];
     }
+    for (int i = 0; i < size; i++)
+    {
+        sum2 += array2[i];
+    }
+
+    total_sum = sum1 + sum2;
     return total_sum;
 }
 
