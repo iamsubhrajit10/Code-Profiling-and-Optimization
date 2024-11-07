@@ -131,7 +131,7 @@ Idx Name          Size      VMA               LMA               File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  32 .debug_str    000000c2  0000000000000000  0000000000000000  0000381b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 33 .debug_line_str 000000b4  0000000000000000  0000000000000000  000038dd  2**0
+ 33 .debug_line_str 000000b0  0000000000000000  0000000000000000  000038dd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 SYMBOL TABLE:
 0000000000000000 l    df *ABS*	0000000000000000              crt1.o
@@ -191,8 +191,8 @@ Contents of section .note.gnu.property:
  400368 020001c0 04000000 00000000 00000000  ................
 Contents of section .note.gnu.build-id:
  400378 04000000 14000000 03000000 474e5500  ............GNU.
- 400388 1b46c352 0239bcc8 5f8f4997 c44b4d87  .F.R.9.._.I..KM.
- 400398 1edebd5d                             ...]            
+ 400388 df313f3b 92d57b7a f7048452 5e359edb  .1?;..{z...R^5..
+ 400398 3af3c8e8                             :...            
 Contents of section .note.ABI-tag:
  40039c 04000000 10000000 01000000 474e5500  ............GNU.
  4003ac 00000000 03000000 02000000 00000000  ................
@@ -431,7 +431,7 @@ Contents of section .debug_aranges:
  0020 00000000 00000000 00000000 00000000  ................
 Contents of section .debug_info:
  0000 54020000 05000108 00000000 095f0000  T............_..
- 0010 001d4b00 00000000 00007611 40000000  ..K.......v.@...
+ 0010 001d0000 00000900 00007611 40000000  ..........v.@...
  0020 0000c701 00000000 00000000 00000108  ................
  0030 073a0000 00010407 3f000000 0a080101  .:......?.......
  0040 08000000 00010207 0e000000 01010602  ................
@@ -495,10 +495,10 @@ Contents of section .debug_abbrev:
 Contents of section .debug_line:
  0000 fe000000 05000800 4f000000 010101fb  ........O.......
  0010 0e0d0001 01010100 00000100 00010101  ................
- 0020 1f040000 00005400 00006600 00007e00  ......T...f...~.
- 0030 00000201 1f020f07 4b000000 004b0000  ........K....K..
- 0040 00008b00 00000193 00000002 9c000000  ................
- 0050 03a30000 0003ac00 00000305 01000902  ................
+ 0020 1f040900 00005000 00006200 00007a00  ......P...b...z.
+ 0030 00000201 1f020f07 00000000 00000000  ................
+ 0040 00008700 0000018f 00000002 98000000  ................
+ 0050 039f0000 0003a800 00000305 01000902  ................
  0060 76114000 00000000 030d0105 07d89105  v.@.............
  0070 05910509 08bd7505 0575050b 08680505  ......u..u...h..
  0080 83050108 593f0505 4c050108 bb3f0517  ....Y?..L....?..
@@ -525,18 +525,17 @@ Contents of section .debug_str:
  00b0 0073686f 72742069 6e74006d 616c6c6f  .short int.mallo
  00c0 6300                                 c.              
 Contents of section .debug_line_str:
- 0000 2f686f6d 652f7375 62687261 6a69742f  /home/subhrajit/
- 0010 436f6465 2d50726f 66696c69 6e672d61  Code-Profiling-a
- 0020 6e642d4f 7074696d 697a6174 696f6e2f  nd-Optimization/
- 0030 636f6d70 696c6572 732d4949 2f6d656d  compilers-II/mem
- 0040 6f72795f 6c61796f 75740073 616d706c  ory_layout.sampl
- 0050 652e6300 2f757372 2f696e63 6c756465  e.c./usr/include
- 0060 2f626974 73002f75 73722f69 6e636c75  /bits./usr/inclu
- 0070 64652f62 6974732f 74797065 73002f75  de/bits/types./u
- 0080 73722f69 6e636c75 64650074 79706573  sr/include.types
- 0090 2e680074 696d655f 742e6800 74696d65  .h.time_t.h.time
- 00a0 2e680073 74646c69 622e6800 73746469  .h.stdlib.h.stdi
- 00b0 6f2e6800                             o.h.            
+ 0000 73616d70 6c652e63 002f686f 6d652f73  sample.c./home/s
+ 0010 75626872 616a6974 2f436f64 652d5072  ubhrajit/Code-Pr
+ 0020 6f66696c 696e672d 616e642d 4f707469  ofiling-and-Opti
+ 0030 6d697a61 74696f6e 2f30325f 636f6d70  mization/02_comp
+ 0040 696c6572 732f3030 5f6d656d 6f727900  ilers/00_memory.
+ 0050 2f757372 2f696e63 6c756465 2f626974  /usr/include/bit
+ 0060 73002f75 73722f69 6e636c75 64652f62  s./usr/include/b
+ 0070 6974732f 74797065 73002f75 73722f69  its/types./usr/i
+ 0080 6e636c75 64650074 79706573 2e680074  nclude.types.h.t
+ 0090 696d655f 742e6800 74696d65 2e680073  ime_t.h.time.h.s
+ 00a0 74646c69 622e6800 73746469 6f2e6800  tdlib.h.stdio.h.
 
 Disassembly of section .interp:
 
@@ -592,18 +591,15 @@ Disassembly of section .note.gnu.build-id:
   400382:	00 00                	add    %al,(%rax)
   400384:	47                   	rex.RXB
   400385:	4e 55                	rex.WRX push %rbp
-  400387:	00 1b                	add    %bl,(%rbx)
-  400389:	46 c3                	rex.RX ret
-  40038b:	52                   	push   %rdx
-  40038c:	02 39                	add    (%rcx),%bh
-  40038e:	bc c8 5f 8f 49       	mov    $0x498f5fc8,%esp
-  400393:	97                   	xchg   %eax,%edi
-  400394:	c4                   	(bad)
-  400395:	4b                   	rex.WXB
-  400396:	4d 87 1e             	xchg   %r11,(%r14)
-  400399:	de                   	.byte 0xde
-  40039a:	bd                   	.byte 0xbd
-  40039b:	5d                   	pop    %rbp
+  400387:	00 df                	add    %bl,%bh
+  400389:	31 3f                	xor    %edi,(%rdi)
+  40038b:	3b 92 d5 7b 7a f7    	cmp    -0x885842b(%rdx),%edx
+  400391:	04 84                	add    $0x84,%al
+  400393:	52                   	push   %rdx
+  400394:	5e                   	pop    %rsi
+  400395:	35 9e db 3a f3       	xor    $0xf33adb9e,%eax
+  40039a:	c8                   	.byte 0xc8
+  40039b:	e8                   	.byte 0xe8
 
 Disassembly of section .note.ABI-tag:
 
@@ -1864,8 +1860,8 @@ Disassembly of section .debug_info:
    b:	00 09                	add    %cl,(%rcx)
    d:	5f                   	pop    %rdi
    e:	00 00                	add    %al,(%rax)
-  10:	00 1d 4b 00 00 00    	add    %bl,0x4b(%rip)        # 61 <__abi_tag-0x40033b>
-  16:	00 00                	add    %al,(%rax)
+  10:	00 1d 00 00 00 00    	add    %bl,0x0(%rip)        # 16 <__abi_tag-0x400386>
+  16:	09 00                	or     %eax,(%rax)
   18:	00 00                	add    %al,(%rax)
   1a:	76 11                	jbe    2d <__abi_tag-0x40036f>
   1c:	40 00 00             	rex add %al,(%rax)
@@ -2273,29 +2269,31 @@ Disassembly of section .debug_line:
   1c:	00 01                	add    %al,(%rcx)
   1e:	01 01                	add    %eax,(%rcx)
   20:	1f                   	(bad)
-  21:	04 00                	add    $0x0,%al
+  21:	04 09                	add    $0x9,%al
   23:	00 00                	add    %al,(%rax)
-  25:	00 54 00 00          	add    %dl,0x0(%rax,%rax,1)
-  29:	00 66 00             	add    %ah,0x0(%rsi)
-  2c:	00 00                	add    %al,(%rax)
-  2e:	7e 00                	jle    30 <__abi_tag-0x40036c>
+  25:	00 50 00             	add    %dl,0x0(%rax)
+  28:	00 00                	add    %al,(%rax)
+  2a:	62                   	(bad)
+  2b:	00 00                	add    %al,(%rax)
+  2d:	00 7a 00             	add    %bh,0x0(%rdx)
   30:	00 00                	add    %al,(%rax)
   32:	02 01                	add    (%rcx),%al
   34:	1f                   	(bad)
   35:	02 0f                	add    (%rdi),%cl
   37:	07                   	(bad)
-  38:	4b 00 00             	rex.WXB add %al,(%r8)
-  3b:	00 00                	add    %al,(%rax)
-  3d:	4b 00 00             	rex.WXB add %al,(%r8)
+	...
   40:	00 00                	add    %al,(%rax)
-  42:	8b 00                	mov    (%rax),%eax
+  42:	87 00                	xchg   %eax,(%rax)
   44:	00 00                	add    %al,(%rax)
-  46:	01 93 00 00 00 02    	add    %edx,0x2000000(%rbx)
-  4c:	9c                   	pushf
+  46:	01 8f 00 00 00 02    	add    %ecx,0x2000000(%rdi)
+  4c:	98                   	cwtl
   4d:	00 00                	add    %al,(%rax)
   4f:	00 03                	add    %al,(%rbx)
-  51:	a3 00 00 00 03 ac 00 	movabs %eax,0xac03000000
-  58:	00 00 
+  51:	9f                   	lahf
+  52:	00 00                	add    %al,(%rax)
+  54:	00 03                	add    %al,(%rbx)
+  56:	a8 00                	test   $0x0,%al
+  58:	00 00                	add    %al,(%rax)
   5a:	03 05 01 00 09 02    	add    0x2090001(%rip),%eax        # 2090061 <_end+0x1c8c019>
   60:	76 11                	jbe    73 <__abi_tag-0x400329>
   62:	40 00 00             	rex add %al,(%rax)
@@ -2430,68 +2428,68 @@ Disassembly of section .debug_str:
 Disassembly of section .debug_line_str:
 
 0000000000000000 <.debug_line_str>:
-   0:	2f                   	(bad)
-   1:	68 6f 6d 65 2f       	push   $0x2f656d6f
-   6:	73 75                	jae    7d <__abi_tag-0x40031f>
-   8:	62                   	(bad)
-   9:	68 72 61 6a 69       	push   $0x696a6172
-   e:	74 2f                	je     3f <__abi_tag-0x40035d>
-  10:	43 6f                	rex.XB outsl %ds:(%rsi),(%dx)
-  12:	64 65 2d 50 72 6f 66 	fs gs sub $0x666f7250,%eax
-  19:	69 6c 69 6e 67 2d 61 	imul   $0x6e612d67,0x6e(%rcx,%rbp,2),%ebp
-  20:	6e 
-  21:	64 2d 4f 70 74 69    	fs sub $0x6974704f,%eax
-  27:	6d                   	insl   (%dx),%es:(%rdi)
-  28:	69 7a 61 74 69 6f 6e 	imul   $0x6e6f6974,0x61(%rdx),%edi
-  2f:	2f                   	(bad)
-  30:	63 6f 6d             	movsxd 0x6d(%rdi),%ebp
-  33:	70 69                	jo     9e <__abi_tag-0x4002fe>
-  35:	6c                   	insb   (%dx),%es:(%rdi)
-  36:	65 72 73             	gs jb  ac <__abi_tag-0x4002f0>
-  39:	2d 49 49 2f 6d       	sub    $0x6d2f4949,%eax
-  3e:	65 6d                	gs insl (%dx),%es:(%rdi)
-  40:	6f                   	outsl  %ds:(%rsi),(%dx)
-  41:	72 79                	jb     bc <__abi_tag-0x4002e0>
-  43:	5f                   	pop    %rdi
-  44:	6c                   	insb   (%dx),%es:(%rdi)
-  45:	61                   	(bad)
-  46:	79 6f                	jns    b7 <__abi_tag-0x4002e5>
-  48:	75 74                	jne    be <__abi_tag-0x4002de>
-  4a:	00 73 61             	add    %dh,0x61(%rbx)
-  4d:	6d                   	insl   (%dx),%es:(%rdi)
-  4e:	70 6c                	jo     bc <__abi_tag-0x4002e0>
-  50:	65 2e 63 00          	gs movsxd %gs:(%rax),%eax
-  54:	2f                   	(bad)
-  55:	75 73                	jne    ca <__abi_tag-0x4002d2>
-  57:	72 2f                	jb     88 <__abi_tag-0x400314>
-  59:	69 6e 63 6c 75 64 65 	imul   $0x6564756c,0x63(%rsi),%ebp
-  60:	2f                   	(bad)
-  61:	62 69 74 73 00       	(bad)
-  66:	2f                   	(bad)
-  67:	75 73                	jne    dc <__abi_tag-0x4002c0>
-  69:	72 2f                	jb     9a <__abi_tag-0x400302>
-  6b:	69 6e 63 6c 75 64 65 	imul   $0x6564756c,0x63(%rsi),%ebp
-  72:	2f                   	(bad)
-  73:	62 69 74 73 2f       	(bad)
-  78:	74 79                	je     f3 <__abi_tag-0x4002a9>
-  7a:	70 65                	jo     e1 <__abi_tag-0x4002bb>
-  7c:	73 00                	jae    7e <__abi_tag-0x40031e>
-  7e:	2f                   	(bad)
-  7f:	75 73                	jne    f4 <__abi_tag-0x4002a8>
-  81:	72 2f                	jb     b2 <__abi_tag-0x4002ea>
-  83:	69 6e 63 6c 75 64 65 	imul   $0x6564756c,0x63(%rsi),%ebp
-  8a:	00 74 79 70          	add    %dh,0x70(%rcx,%rdi,2)
-  8e:	65 73 2e             	gs jae bf <__abi_tag-0x4002dd>
-  91:	68 00 74 69 6d       	push   $0x6d697400
-  96:	65 5f                	gs pop %rdi
-  98:	74 2e                	je     c8 <__abi_tag-0x4002d4>
-  9a:	68 00 74 69 6d       	push   $0x6d697400
-  9f:	65 2e 68 00 73 74 64 	gs cs push $0x64747300
-  a6:	6c                   	insb   (%dx),%es:(%rdi)
-  a7:	69 62 2e 68 00 73 74 	imul   $0x74730068,0x2e(%rdx),%esp
-  ae:	64                   	fs
-  af:	69                   	.byte 0x69
-  b0:	6f                   	outsl  %ds:(%rsi),(%dx)
-  b1:	2e                   	cs
-  b2:	68                   	.byte 0x68
+   0:	73 61                	jae    63 <__abi_tag-0x400339>
+   2:	6d                   	insl   (%dx),%es:(%rdi)
+   3:	70 6c                	jo     71 <__abi_tag-0x40032b>
+   5:	65 2e 63 00          	gs movsxd %gs:(%rax),%eax
+   9:	2f                   	(bad)
+   a:	68 6f 6d 65 2f       	push   $0x2f656d6f
+   f:	73 75                	jae    86 <__abi_tag-0x400316>
+  11:	62                   	(bad)
+  12:	68 72 61 6a 69       	push   $0x696a6172
+  17:	74 2f                	je     48 <__abi_tag-0x400354>
+  19:	43 6f                	rex.XB outsl %ds:(%rsi),(%dx)
+  1b:	64 65 2d 50 72 6f 66 	fs gs sub $0x666f7250,%eax
+  22:	69 6c 69 6e 67 2d 61 	imul   $0x6e612d67,0x6e(%rcx,%rbp,2),%ebp
+  29:	6e 
+  2a:	64 2d 4f 70 74 69    	fs sub $0x6974704f,%eax
+  30:	6d                   	insl   (%dx),%es:(%rdi)
+  31:	69 7a 61 74 69 6f 6e 	imul   $0x6e6f6974,0x61(%rdx),%edi
+  38:	2f                   	(bad)
+  39:	30 32                	xor    %dh,(%rdx)
+  3b:	5f                   	pop    %rdi
+  3c:	63 6f 6d             	movsxd 0x6d(%rdi),%ebp
+  3f:	70 69                	jo     aa <__abi_tag-0x4002f2>
+  41:	6c                   	insb   (%dx),%es:(%rdi)
+  42:	65 72 73             	gs jb  b8 <__abi_tag-0x4002e4>
+  45:	2f                   	(bad)
+  46:	30 30                	xor    %dh,(%rax)
+  48:	5f                   	pop    %rdi
+  49:	6d                   	insl   (%dx),%es:(%rdi)
+  4a:	65 6d                	gs insl (%dx),%es:(%rdi)
+  4c:	6f                   	outsl  %ds:(%rsi),(%dx)
+  4d:	72 79                	jb     c8 <__abi_tag-0x4002d4>
+  4f:	00 2f                	add    %ch,(%rdi)
+  51:	75 73                	jne    c6 <__abi_tag-0x4002d6>
+  53:	72 2f                	jb     84 <__abi_tag-0x400318>
+  55:	69 6e 63 6c 75 64 65 	imul   $0x6564756c,0x63(%rsi),%ebp
+  5c:	2f                   	(bad)
+  5d:	62 69 74 73 00       	(bad)
+  62:	2f                   	(bad)
+  63:	75 73                	jne    d8 <__abi_tag-0x4002c4>
+  65:	72 2f                	jb     96 <__abi_tag-0x400306>
+  67:	69 6e 63 6c 75 64 65 	imul   $0x6564756c,0x63(%rsi),%ebp
+  6e:	2f                   	(bad)
+  6f:	62 69 74 73 2f       	(bad)
+  74:	74 79                	je     ef <__abi_tag-0x4002ad>
+  76:	70 65                	jo     dd <__abi_tag-0x4002bf>
+  78:	73 00                	jae    7a <__abi_tag-0x400322>
+  7a:	2f                   	(bad)
+  7b:	75 73                	jne    f0 <__abi_tag-0x4002ac>
+  7d:	72 2f                	jb     ae <__abi_tag-0x4002ee>
+  7f:	69 6e 63 6c 75 64 65 	imul   $0x6564756c,0x63(%rsi),%ebp
+  86:	00 74 79 70          	add    %dh,0x70(%rcx,%rdi,2)
+  8a:	65 73 2e             	gs jae bb <__abi_tag-0x4002e1>
+  8d:	68 00 74 69 6d       	push   $0x6d697400
+  92:	65 5f                	gs pop %rdi
+  94:	74 2e                	je     c4 <__abi_tag-0x4002d8>
+  96:	68 00 74 69 6d       	push   $0x6d697400
+  9b:	65 2e 68 00 73 74 64 	gs cs push $0x64747300
+  a2:	6c                   	insb   (%dx),%es:(%rdi)
+  a3:	69 62 2e 68 00 73 74 	imul   $0x74730068,0x2e(%rdx),%esp
+  aa:	64                   	fs
+  ab:	69                   	.byte 0x69
+  ac:	6f                   	outsl  %ds:(%rsi),(%dx)
+  ad:	2e                   	cs
+  ae:	68                   	.byte 0x68
 	...
