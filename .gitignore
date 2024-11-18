@@ -1,1 +1,8 @@
 objdumps
+executables
+*.out
+*.dump
+*.data
+*.old
+cachegrind.out.*
+*.txt
