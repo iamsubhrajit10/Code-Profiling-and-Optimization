@@ -11,8 +11,7 @@ OUTPUT_FILE_BASE="find14"
 
 # Define the optimization flags
 FLAGS=("-O0" "-O1" "-O2" "-O3" "-Ofast")
-# TESTS=("256M.txt", "1G.txt", "4G.txt")
-TESTS=("256M.txt")
+TESTS=("256M.txt", "1G.txt", "4G.txt")
 
 function run_tests {
     for TEST in "${TESTS[@]}"; do
@@ -48,8 +47,7 @@ for FLAG in "${FLAGS[@]}"; do
         fi
     done
     
-#     for i in {1..100}; do
-    for i in {1..2}; do
+    for i in {1..100}; do
         run_tests $OUTPUT_FILE
         sleep 5
     done
