@@ -1,6 +1,10 @@
 #!/bin/bash
 
-read -p "Give 'submission/' header file to use [eg 'xx_yy.hpp']: " HEADER
+if [ -z "$1" ]; then
+    echo "No header supplied. Usage: ./eval_one.sh [header file 'xx_yy.hpp' from 'submissions/']"
+fi
+
+HEADER=$1
 HEADER_DST="headers/find14.hpp"
 cp -f "submissions/${HEADER}" $HEADER_DST
 mkdir -p logs
@@ -34,8 +38,8 @@ for FLAG in "${FLAGS[@]}"; do
     g++ $FLAG -o $OUTPUT_FILE $SOURCE_FILE
     
     if [ $? -ne 0 ]; then
-        echo "Compilation Failed."
-        exit
+        echo "Compilation Failed. Exiting"
+        break
     else
         echo "Running Tests for flag $FLAG."
     fi
@@ -43,6 +47,8 @@ for FLAG in "${FLAGS[@]}"; do
     for TEST in "${TESTS[@]}"; do
         if [ ! -f "$TEST" ]; then
             echo "Test" $TEST "doesn't exist. Exiting."
+            rm "${HEADER_DST}"
+            rm "${OUTPUT_FILE}"
             exit
         fi
     done
