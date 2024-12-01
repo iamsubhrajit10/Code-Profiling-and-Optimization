@@ -3,10 +3,15 @@
 #include <cstdio> // for std::printf
 #include <iostream>
 #include "mio.hpp"
+#include <cstdlib>
+#include <cstring>
 
 using std::rand;
 
-const int N = 100'000;
+const long long M256 = 256 * (1<<20);
+const long long G1 = M256 * 4;
+const long long G4 = G1 * 4;
+long long N = 0;
 const int SET_SIZE = 13;
 
 int handle_error(const std::error_code& error);
@@ -20,8 +25,29 @@ inline size_t get_random_ans_idx() {
     return rand() % (N - SET_SIZE - 1);
 }
 
-int main() {
-    const auto path = "testcase.txt";
+int main(int argc, char *argv[]) {
+    if(argc < 3) {
+        std::printf("Usage: ./create_testcases <seed> <test_number>. Test_number: [0] 256M, [1] 1G, [2] 4G.");
+        return 1;
+    }
+    
+    auto path = "";
+    if(strcmp(argv[2], "0") == 0) {
+        path = "256M.txt";
+        N = M256;
+    }
+    else if(strcmp(argv[2], "1") == 0){
+        path = "1G.txt";
+        N = G1;
+    }
+    else if(strcmp(argv[2], "2") == 0) {
+        path = "4G.txt";
+        N = G4;
+    }
+    else {
+        return 1;
+    }   
+    
     allocate_file(path, N);
 
     std::error_code error;
@@ -29,7 +55,9 @@ int main() {
             path, 0, mio::map_entire_file, error);
     if (error) { return handle_error(error); }
     
-    srand(20241118);
+    int x = atoi(argv[1]);
+    
+    srand(x);
     char charset[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'};
 
     for(auto& b: rw_mmap) {
