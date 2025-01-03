@@ -15,7 +15,7 @@ OUTPUT_FILE_BASE="find14"
 
 # Define the optimization flags
 FLAGS=("-O0" "-O1" "-O2" "-O3" "-Ofast")
-TESTS=("256M.txt", "1G.txt", "4G.txt")
+TESTS=("256M.txt" "1G.txt" "4G.txt")
 
 function run_tests {
     for TEST in "${TESTS[@]}"; do
@@ -35,7 +35,7 @@ for FLAG in "${FLAGS[@]}"; do
         OUTPUT_FILE="${OUTPUT_FILE_BASE}_${FLAG//-}.out"
     fi
 
-    g++ $FLAG -o $OUTPUT_FILE $SOURCE_FILE
+    g++ $FLAG -o $OUTPUT_FILE $SOURCE_FILE -fopenmp
     
     if [ $? -ne 0 ]; then
         echo "Compilation Failed. Exiting"

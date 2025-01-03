@@ -6,3 +6,5 @@ executables
 *.old
 cachegrind.out.*
 *.txt
+*.zip
+logs
